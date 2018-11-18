@@ -5,7 +5,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.annotation.GlideModule;
+import com.bumptech.glide.module.AppGlideModule;
 
 import java.util.List;
 
@@ -43,15 +47,19 @@ public class TeamsAdapter extends RecyclerView.Adapter<TeamsAdapter.TeamViewHold
 
     class TeamViewHolder extends RecyclerView.ViewHolder {
         private TextView viewName;
+        private ImageView viewImage;
 
         TeamViewHolder(View view) {
             super(view);
             // Здесь находим все наши элементы
             viewName = view.findViewById(R.id.viewName);
+            viewImage = view.findViewById(R.id.image);
         }
 
         public void bindNewsItemView(int pos) {
-            viewName.setText(listTeams.get(pos).getName());
+            TeamDTO team = listTeams.get(pos);
+            viewName.setText(team.getName());
+            GlideApp.with(viewName.getContext()).load(team.getLogoURL()).into(viewImage);
         }
     }
 }

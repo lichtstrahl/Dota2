@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/bigMargin"
+    android:layout_marginEnd="@dimen/bigMargin"
     xmlns:tools="http://schemas.android.com/tools">
 
     <RelativeLayout
@@ -14,10 +16,18 @@
             android:id="@+id/viewName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/bigMargin"
+            android:layout_margin="@dimen/smallMargin"
+            android:layout_centerVertical="true"
             android:textSize="@dimen/bigText"
-            tools:text="@string/simpleTeamName"
-            />
+            tools:text="@string/simpleTeamName" />
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="@dimen/bigIcon"
+            android:layout_height="@dimen/bigIcon"
+            android:layout_toEndOf="@id/viewName"
+            android:layout_margin="@dimen/smallMargin"
+            tools:src="@tools:sample/avatars"/>
 
     </RelativeLayout>
 
