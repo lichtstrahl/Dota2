@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import java.util.LinkedList;
 import java.util.List;
 
+import iv.root.dota2.retrofit.AccountDTO;
 import iv.root.dota2.retrofit.PlayerDTO;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,6 +20,7 @@ import retrofit2.Response;
 public class DetailsActivity extends AppCompatActivity {
     private static final String INTENT_TEAM_ID = "intent:team_id";
     private RecyclerView recyclerView;
+    private List<PlayerDTO> players = new LinkedList<>();
     private PlayersAdapter adapter;
 
     public static void start(Activity activity, int teamId) {
@@ -51,14 +53,31 @@ public class DetailsActivity extends AppCompatActivity {
             List<PlayerDTO> list = response.body();
 
             if (list != null) {
+                players = list;
                 for (PlayerDTO player : list)
-                    adapter.append(player);
+                    App.getDotaAPI().getPlayerAccount(player.getAccountID()).enqueue(new AccountCallback());
             } else
                 App.logI("Body is NULL");
         }
 
         @Override
         public void onFailure(Call<List<PlayerDTO>> call, Throwable t) {
+            App.logE(t.getMessage());
+        }
+    }
+
+    class AccountCallback implements Callback<AccountDTO> {
+        @Override
+        public void onResponse(Call<AccountDTO> call, Response<AccountDTO> response) {
+            AccountDTO account = response.body();
+            if (account != null) {
+                App.logI("Account rank:" + account.getRank());
+            } else
+                App.logI("Body is NULL");
+        }
+
+        @Override
+        public void onFailure(Call<AccountDTO> call, Throwable t) {
             App.logE(t.getMessage());
         }
     }

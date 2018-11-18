@@ -15,4 +15,7 @@ public interface Dota2API {
 
     @GET("/api/teams/{teamID}/players")
     Call<List<PlayerDTO>> getTeamPlayers(@Path("teamID") int teamID);
+
+    @GET("/api/players/{account_id}")
+    Call<AccountDTO> getPlayerAccount(@Path("account_id") int accountID);
 }
