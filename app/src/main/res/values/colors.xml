@@ -4,5 +4,6 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
-    <color name="backgroundItem">#c5e1a5</color>
+    <color name="backgroundItemTeam">#c5e1a5</color>
+    <color name="backgroundItemPlayer">#e6ee9c</color>
 </resources>

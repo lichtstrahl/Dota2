@@ -14,6 +14,6 @@
         android:layout_height="match_parent"
         android:layout_marginStart="@dimen/middleMargin"
         android:layout_marginEnd="@dimen/middleMargin"
-        toolsList:listitem="@layout/list_item"/>
+        toolsList:listitem="@layout/team_item"/>
 
 </RelativeLayout>

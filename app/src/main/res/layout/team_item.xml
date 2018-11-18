@@ -6,7 +6,7 @@
     android:layout_marginStart="@dimen/bigMargin"
     android:layout_marginEnd="@dimen/bigMargin"
     android:layout_marginBottom="@dimen/smallMargin"
-    android:backgroundTint="@color/backgroundItem"
+    android:backgroundTint="@color/backgroundItemTeam"
     xmlns:tools="http://schemas.android.com/tools">
 
     <RelativeLayout
