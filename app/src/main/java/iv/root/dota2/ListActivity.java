@@ -1,7 +1,9 @@
 package iv.root.dota2;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -31,8 +33,12 @@ public class ListActivity extends AppCompatActivity {
         });
 
         listView = findViewById(R.id.listView);
-        listView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         listView.setAdapter(adapter);
+
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            listView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        } else
+            listView.setLayoutManager(new GridLayoutManager(this, 2));
 
         App.getDotaAPI().getAllTeam().enqueue(new TeamCallback());
     }

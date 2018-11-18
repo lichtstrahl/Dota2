@@ -1,6 +1,7 @@
 package iv.root.dota2;
 
 import android.app.Application;
+import android.content.res.Configuration;
 import android.util.Log;
 
 import iv.root.dota2.retrofit.Dota2API;
