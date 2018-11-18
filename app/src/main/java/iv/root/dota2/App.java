@@ -1,7 +1,6 @@
 package iv.root.dota2;
 
 import android.app.Application;
-import android.provider.Settings;
 import android.util.Log;
 
 import iv.root.dota2.retrofit.Dota2API;
@@ -24,9 +23,6 @@ public class App extends Application {
                 .build();
     }
 
-    public static Retrofit getRetrofit() {
-        return retrofit;
-    }
     public static Dota2API getDotaAPI() {
         return retrofit.create(Dota2API.class);
     }

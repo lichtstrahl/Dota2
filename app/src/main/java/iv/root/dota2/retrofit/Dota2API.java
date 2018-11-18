@@ -10,9 +10,6 @@ public interface Dota2API {
     @GET("/api/teams")
     Call<List<TeamDTO>> getAllTeam();
 
-    @GET("/api/proPlayers")
-    Call<List<PlayerDTO>> getAllPlayers();
-
     @GET("/api/teams/{teamID}/players")
     Call<List<PlayerDTO>> getTeamPlayers(@Path("teamID") int teamID);
 

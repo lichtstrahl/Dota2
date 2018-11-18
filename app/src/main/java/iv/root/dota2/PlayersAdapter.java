@@ -11,7 +11,6 @@ import android.widget.TextView;
 import java.util.List;
 
 import iv.root.dota2.retrofit.Player;
-import iv.root.dota2.retrofit.PlayerDTO;
 
 public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.PlayersViewHolder> {
     private List<Player> list;
