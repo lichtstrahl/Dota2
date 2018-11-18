@@ -28,7 +28,7 @@ public class ListActivity extends AppCompatActivity {
         adapter = new TeamsAdapter(new LinkedList<>(), LayoutInflater.from(this), view -> {
             int pos = listView.getChildAdapterPosition(view);
             TeamDTO team = adapter.getItem(pos);
-            Toast.makeText(this, ""+team.getTeamID(), Toast.LENGTH_SHORT).show();
+            DetailsActivity.start(this, team.getTeamID());
         });
 
         listView = findViewById(R.id.listView);
