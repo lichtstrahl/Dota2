@@ -5,17 +5,19 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
 
+import iv.root.dota2.retrofit.Player;
 import iv.root.dota2.retrofit.PlayerDTO;
 
 public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.PlayersViewHolder> {
-    private List<PlayerDTO> list;
+    private List<Player> list;
     private LayoutInflater inflater;
 
-    public PlayersAdapter(List<PlayerDTO> l, LayoutInflater i) {
+    public PlayersAdapter(List<Player> l, LayoutInflater i) {
         list = l;
         inflater = i;
     }
@@ -36,7 +38,7 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.PlayersV
         return list.size();
     }
 
-    public void append(PlayerDTO player) {
+    public void append(Player player) {
         list.add(player);
         notifyItemInserted(list.size()-1);
     }
@@ -44,16 +46,20 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.PlayersV
 
     class PlayersViewHolder extends RecyclerView.ViewHolder {
         private TextView viewName;
+        private ImageView viewAvatar;
 
         public PlayersViewHolder(View view) {
             super(view);
 
             viewName = view.findViewById(R.id.viewName);
+            viewAvatar = view.findViewById(R.id.viewAvatar);
         }
 
         void bindPlayer(int pos) {
-            PlayerDTO player = list.get(pos);
+            Player player = list.get(pos);
             viewName.setText(player.getName());
+
+            GlideApp.with(viewAvatar.getContext()).load(player.getAvatarURL()).into(viewAvatar);
         }
     }
 }
