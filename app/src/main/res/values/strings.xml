@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Dota2</string>
+
+
+    <!-- CardView -->
+    <string name="simpleTeamName">Na\'Vi</string>
 </resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Margin -->
+    <dimen name="smallMargin">4dp</dimen>
+    <dimen name="middleMargin">8dp</dimen>
+    <dimen name="bigMargin">12dp</dimen>
+
+    <!-- TextSize -->
+    <dimen name="smallText">16sp</dimen>
+    <dimen name="middleText">20sp</dimen>
+    <dimen name="bigText">24sp</dimen>
+</resources>
