@@ -7,11 +7,16 @@ public class TeamDTO {
     String name;
     @SerializedName("logo_url")
     String logoURL;
+    @SerializedName("team_id")
+    int teamID;
 
     public String getName() {
         return name;
     }
     public String getLogoURL() {
         return logoURL;
+    }
+    public int getTeamID() {
+        return teamID;
     }
 }

@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.Window;
+import android.widget.Toast;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -25,7 +25,11 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        adapter = new TeamsAdapter(new LinkedList<TeamDTO>(), LayoutInflater.from(this));
+        adapter = new TeamsAdapter(new LinkedList<>(), LayoutInflater.from(this), view -> {
+            int pos = listView.getChildAdapterPosition(view);
+            TeamDTO team = adapter.getItem(pos);
+            Toast.makeText(this, ""+team.getTeamID(), Toast.LENGTH_SHORT).show();
+        });
 
         listView = findViewById(R.id.listView);
         listView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));

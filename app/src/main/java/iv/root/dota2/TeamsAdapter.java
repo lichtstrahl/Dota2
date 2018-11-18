@@ -8,9 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.annotation.GlideModule;
-import com.bumptech.glide.module.AppGlideModule;
-
 import java.util.List;
 
 import iv.root.dota2.retrofit.TeamDTO;
@@ -18,10 +15,12 @@ import iv.root.dota2.retrofit.TeamDTO;
 public class TeamsAdapter extends RecyclerView.Adapter<TeamsAdapter.TeamViewHolder> {
     private List<TeamDTO> listTeams;
     private LayoutInflater inflater;
+    private View.OnClickListener listener;
 
-    public TeamsAdapter(List<TeamDTO> list, LayoutInflater inf) {
+    public TeamsAdapter(List<TeamDTO> list, LayoutInflater inf, View.OnClickListener l) {
         listTeams = list;
         inflater = inf;
+        listener = l;
     }
 
     @NonNull
@@ -45,6 +44,10 @@ public class TeamsAdapter extends RecyclerView.Adapter<TeamsAdapter.TeamViewHold
         notifyItemInserted(listTeams.size()-1);
     }
 
+    public TeamDTO getItem(int pos) {
+        return listTeams.get(pos);
+    }
+
     class TeamViewHolder extends RecyclerView.ViewHolder {
         private TextView viewName;
         private ImageView viewImage;
@@ -54,12 +57,16 @@ public class TeamsAdapter extends RecyclerView.Adapter<TeamsAdapter.TeamViewHold
             // Здесь находим все наши элементы
             viewName = view.findViewById(R.id.viewName);
             viewImage = view.findViewById(R.id.image);
+            view.setOnClickListener(listener);
         }
 
         public void bindNewsItemView(int pos) {
             TeamDTO team = listTeams.get(pos);
             viewName.setText(team.getName());
             GlideApp.with(viewName.getContext()).load(team.getLogoURL()).into(viewImage);
+
+            if (team.getLogoURL() == null)
+                App.logI("NULL image URL: " + pos);
         }
     }
 }
